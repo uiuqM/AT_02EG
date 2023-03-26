@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from django.conf.urls import url
+#from django.conf.urls import url
 from django.contrib import admin
 from django.views.generic import TemplateView
 
@@ -23,6 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('polls/', include('polls.urls')),
 
-    url(r'^admin/', admin.site.urls),
-    url('blog', TemplateView.as_view(template_name='blog.html')),
+    path(r'^admin/', admin.site.urls),
+    path('blog', TemplateView.as_view(template_name='blog.html')),
 ]
