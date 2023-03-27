@@ -22,7 +22,4 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('polls/', include('polls.urls')),
-
-    path(r'^admin/', admin.site.urls),
-    path('blog', TemplateView.as_view(template_name='blog.html')),
 ]
