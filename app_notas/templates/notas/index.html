@@ -1,0 +1,10 @@
+{% if latest_nota %}
+    <ul>
+        {% for nota in latest_nota %}
+            <h2>{{nota.titulo}}</h2>
+            <li>{{nota.conteudo}}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p> Nehuma nota disponivel ainda...</p>
+{% endif %}
