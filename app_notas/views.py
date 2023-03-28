@@ -14,4 +14,4 @@ def index(request):
 
 def detail(request, nota_id):
     notaa = get_object_or_404(nota, pk=nota_id)
-    return render(request, 'polls/detail.html', {'nota':notaa})
+    return render(request, 'app_notas/detail.html', {'nota':notaa})
