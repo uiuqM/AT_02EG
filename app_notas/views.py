@@ -1,9 +1,9 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import nota
 from django.template import loader
 from datetime import datetime
-
+from django.urls import reverse
 #from .forms import NotaForm
 
 # Create your views here.
@@ -26,8 +26,14 @@ def save_nota(request):
         titulo = request.POST['titulo']
         conteudo = request.POST['conteudo']
         data = datetime.now()
-        dt = data.strftime("%Y/%m/%d %H:%M:%S")
-        print(titulo, conteudo, dt)
         en = nota(titulo=titulo, conteudo=conteudo, data=data)
         en.save()
     return HttpResponse('ok')
+
+def delete_nota(request, id):   
+    del_nota = nota.objects.get(pk=id)
+    del_nota.delete()
+    return redirect('index')
+
+def mod_nota(request, id):
+    m_nota = nota.objects.get(pk=id)

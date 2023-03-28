@@ -11,17 +11,17 @@
 <body>
 
 <nav  class="navbar navbar-expand-lg navbar-light bg-light">
-<a class="navbar-brand">NavBar</a>
+<a class="navbar-brand">BloquiTO</a>
 </nav>
 <form class="container" id="nota-form">
     {% csrf_token %}
 <div class="form-group">
     <label for="titulo">Titulo</label>
-    <input id = "titulo" type="text" class="form-control form-control-lg" placeholder="digite um titulo a sua nota">
+    <input id = "titulo" type="text" class="form-control form-control-lg" placeholder="Digite um titulo a sua nota">
 </div>
 <div class="form-group">
     <label for="conteudo">Conteudo</label>
-    <textarea id = "conteudo" class="form-control" rows="3"></textarea>
+    <textarea id = "conteudo" class="form-control"  placeholder="Adicione algo a nota..."rows="3"></textarea>
 </div>
 <hr class="hr"/>
 <button type="submit" class="btn btn-primary">Criar nota</button>
@@ -50,18 +50,37 @@
 <div class="row row-cols-1 row-cols-md-3 g-4">
     {% for nota in latest_nota %}
     <div class="col">
+        <form id="card-form">
             <div class="card">
                     <div class="card-body">
-                        <h2 class="card-header">{{nota.titulo}}</h2>
+                        <p class="card-header">{{nota.id}}</p>
+                        <h2 class="card-title">{{nota.titulo}}</h2>
                         <li class="card-text">{{nota.conteudo}}</li>
                         <div class="btn-group" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-secondary">Remover</button>
-                            <button type="button" class="btn btn-secondary">Modificar</button>
+                            <a href="{% url 'delete_nota' nota.id %}" class="btn-outline-danger btn-sm">Remover</a>
+                            <a href="{% url 'mod_nota' nota.id %}" class="btn btn-outline btn-sm">Modificar</a>
                         </div>
                     </div>
+            </form>
             </div>
     </div>
     {% endfor %}
+<!--<script type="text/javascript">
+        $(document).on('submit', '#delete-button', function(e){
+        e.preventDefault();
+        $.ajax({
+            type: 'DELETE',
+            url: '/delete_nota',
+            data:{
+                ID : $('#card-header').val(),
+                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+            },
+            success: function(data){
+                
+            }
+        })
+    })
+</script>-->
 </div>
 </ul>
 </div>

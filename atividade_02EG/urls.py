@@ -18,10 +18,11 @@ from django.urls import include, path
 #from django.conf.urls import url
 from django.contrib import admin
 from django.views.generic import TemplateView
-from app_notas.views import index, save_nota
+from app_notas.views import index, save_nota, delete_nota
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('app_notas/', include('app_notas.urls')),
-    path('save_nota', save_nota, name='save_nota')
+    path('save_nota', save_nota, name='save_nota'),
+    path('delete_nota', delete_nota, name='delete_nota'),
 ]
