@@ -1,5 +1,10 @@
+{% extends 'usuarios/base.html' %}
+{% block conteudo %}
+
 <form action="/app_notas/" method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Submit">
 </form>
+
+{% endblock %}
