@@ -25,4 +25,5 @@ urlpatterns = [
     path('app_notas/', include('app_notas.urls')),
     path('save_nota', save_nota, name='save_nota'),
     path('delete_nota', delete_nota, name='delete_nota'),
+    path('save_nota/<id>', save_nota, name='save_nota'),
 ]

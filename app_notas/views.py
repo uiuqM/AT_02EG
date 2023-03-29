@@ -21,14 +21,13 @@ def detail(request, nota_id):
     return render(request, 'app_notas/detail.html', {'nota':notaa})
 
 def save_nota(request):
-
     if request.method == 'POST':
         titulo = request.POST['titulo']
         conteudo = request.POST['conteudo']
         data = datetime.now()
         en = nota(titulo=titulo, conteudo=conteudo, data=data)
         en.save()
-    return HttpResponse('ok')
+        return redirect('index')
 
 def delete_nota(request, id):   
     del_nota = nota.objects.get(pk=id)
@@ -37,3 +36,17 @@ def delete_nota(request, id):
 
 def mod_nota(request, id):
     m_nota = nota.objects.get(pk=id)
+    template = loader.get_template('app_notas/mod_nota.html')
+    context = {
+        'm_nota': m_nota,
+    }
+    return HttpResponse(template.render(context, request))
+
+def save_modnota(request, id):
+    if request.method == 'POST':
+        titulo = request.POST['titulo']
+        conteudo = request.POST['conteudo']
+        data = datetime.now()
+        en = nota(id= id, titulo=titulo, conteudo=conteudo, data=data)
+        en.save()
+        return redirect('index')
