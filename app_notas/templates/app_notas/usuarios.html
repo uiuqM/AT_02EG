@@ -1,4 +1,4 @@
-{% extends 'usuarios/base.html' %}
+{% extends 'app_notas/base.html' %}
 {% block conteudo %}
 
 <div class="container">
@@ -9,9 +9,10 @@
     </tr>
     {% for usuario in usuarios %}
     <tr>
-      <td>{{usuario.id_usuario}}</td>
-      <td>{{usuario.nome}}</td>
+      <td><a href="{% url 'index'  %}">{{usuario.id_usuario}}</a></td>
+      <td><a href="{% url 'index'  %}">{{usuario.nome}}</a></td>
     </tr>
+  </a>
     {% endfor %}
   </table>
 </div>

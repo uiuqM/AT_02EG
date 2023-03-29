@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import nota
+from .models import nota, usuario_nota, Usuario
 from django.template import loader
 from datetime import datetime
 from django.urls import reverse
@@ -16,6 +16,7 @@ def index(request):
     template = loader.get_template('app_notas/index.html')
     context = {
         'latest_nota': latest_nota,
+        'usuario_danota': usuario_danota,
     }
     return HttpResponse(template.render(context, request))
 
@@ -55,7 +56,7 @@ def save_modnota(request, id):
         en.save()
         return redirect('index')
 
-def Usuario(request):
+def usuario(request):
     #salvar os dados da tela para o banco de dados
     novo_usuario = Usuario()
     novo_usuario.nome = request.POST.get('nome')

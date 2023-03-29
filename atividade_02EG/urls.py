@@ -24,7 +24,7 @@ from app_notas import views
 urlpatterns = [
 
     path('', views.home,name='home'),
-    path('usuarios/', views.Usuario,name='listagem_usuarios'),
+    path('usuarios/', views.usuario,name='listagem_usuarios'),
     path('admin/', admin.site.urls),
     path('app_notas/', include('app_notas.urls')),
     path('save_nota', save_nota, name='save_nota'),
