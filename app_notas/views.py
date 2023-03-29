@@ -16,7 +16,6 @@ def index(request):
     template = loader.get_template('app_notas/index.html')
     context = {
         'latest_nota': latest_nota,
-        'usuario_danota': usuario_danota,
     }
     return HttpResponse(template.render(context, request))
 
