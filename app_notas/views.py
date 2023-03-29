@@ -3,7 +3,12 @@ from django.http import HttpResponse, HttpResponseRedirect
 from .models import nota
 from django.template import loader
 from datetime import datetime
+<<<<<<< Updated upstream
 from django.urls import reverse
+=======
+from django.shortcuts import render
+
+>>>>>>> Stashed changes
 #from .forms import NotaForm
 
 # Create your views here.
@@ -35,5 +40,19 @@ def delete_nota(request, id):
     del_nota.delete()
     return redirect('index')
 
+<<<<<<< Updated upstream
 def mod_nota(request, id):
     m_nota = nota.objects.get(pk=id)
+=======
+def Usuario(request):
+    #salvar os dados da tela para o banco de dados
+    novo_usuario = Usuario()
+    novo_usuario.nome = request.POST.get('nome')
+    novo_usuario.save()
+    #exibir todos os usuários cadastrados em uma nova página
+    usuarios={
+        'usuarios': Usuario.objects.all()
+    }
+    #retornar os dados para as páginas de listagem de usuários
+    return render(request, 'usuarios/usuarios.html',usuarios)
+>>>>>>> Stashed changes

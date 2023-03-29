@@ -21,6 +21,11 @@ from django.views.generic import TemplateView
 from app_notas.views import index, save_nota, delete_nota
 
 urlpatterns = [
+<<<<<<< Updated upstream
+=======
+    path('', views.home,name='home'),
+    path('usuarios/', views.Usuario,name='listagem_usuarios'),
+>>>>>>> Stashed changes
     path('admin/', admin.site.urls),
     path('app_notas/', include('app_notas.urls')),
     path('save_nota', save_nota, name='save_nota'),
