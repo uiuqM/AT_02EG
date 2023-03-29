@@ -4,6 +4,9 @@ from .models import nota
 from django.template import loader
 from datetime import datetime
 from django.urls import reverse
+from django.shortcuts import render
+
+
 #from .forms import NotaForm
 
 # Create your views here.
@@ -34,6 +37,7 @@ def delete_nota(request, id):
     del_nota.delete()
     return redirect('index')
 
+
 def mod_nota(request, id):
     m_nota = nota.objects.get(pk=id)
     template = loader.get_template('app_notas/mod_nota.html')
@@ -50,3 +54,19 @@ def save_modnota(request, id):
         en = nota(id= id, titulo=titulo, conteudo=conteudo, data=data)
         en.save()
         return redirect('index')
+
+def Usuario(request):
+    #salvar os dados da tela para o banco de dados
+    novo_usuario = Usuario()
+    novo_usuario.nome = request.POST.get('nome')
+    novo_usuario.save()
+    #exibir todos os usuários cadastrados em uma nova página
+    usuarios={
+        'usuarios': Usuario.objects.all()
+    }
+    #retornar os dados para as páginas de listagem de usuários
+    return render(request, 'app_notas/usuarios.html',usuarios)
+
+def home(request):
+    return render(request,'app_notas/home.html')
+
