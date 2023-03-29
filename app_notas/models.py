@@ -10,3 +10,7 @@ class nota(models.Model):
 class Usuario(models.Model):
     id_usuario = models.AutoField(primary_key=True)
     nome = models.TextField(max_length=255)
+
+class usuario_nota(models.Model):
+    id_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    id_nota = models.ForeignKey(nota, on_delete=models.CASCADE)

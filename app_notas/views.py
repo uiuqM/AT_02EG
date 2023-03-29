@@ -69,4 +69,3 @@ def Usuario(request):
 
 def home(request):
     return render(request,'app_notas/home.html')
-
