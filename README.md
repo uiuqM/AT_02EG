@@ -1,2 +1,2 @@
-# AT_02EG
-Repositorio do projeto da atividade 02 de Engenharia de Software
+# Bloquito!
+O seu bloco de notas pessoal
