@@ -52,5 +52,8 @@ def Usuario(request):
         'usuarios': Usuario.objects.all()
     }
     #retornar os dados para as páginas de listagem de usuários
-    return render(request, 'usuarios/usuarios.html',usuarios)
+    return render(request, 'app_notas/usuarios.html',usuarios)
+
+def home(request):
+    return render(request,'app_notas/home.html')
 
